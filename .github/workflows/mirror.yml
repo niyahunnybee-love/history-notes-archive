@@ -1,0 +1,28 @@
+name: Secure Resource Fetcher
+on:
+  workflow_dispatch: # Allows you to trigger this instantly with a single button click
+
+jobs:
+  build-mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Fetch and Flatten Layout Elements
+        run: |
+          # Command GitHub's unrestricted servers to mirror the desktop framework
+          wget --no-check-certificate \
+               --page-requisites \
+               --adjust-extension \
+               --span-hosts \
+               --convert-links \
+               --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" \
+               "https://instagram.com" || true
+
+      - name: Package Unblocked Framework
+        uses: actions/upload-artifact@v4
+        with:
+          name: secure-offline-workspace
+          path: ://instagram.com
+          retention-days: 1
